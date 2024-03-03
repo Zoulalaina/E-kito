@@ -33,8 +33,7 @@ def cart(request):
     return render(request, 'store/cart.html', context={"orders": cart.order.all()})
 
 def delete_cart(request):
-    cart = request.user.cart
-    if cart:
+    if cart := request.user.cart:
         cart.order.all().delete()
         cart.delete()
 

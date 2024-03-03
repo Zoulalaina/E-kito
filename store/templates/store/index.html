@@ -2,11 +2,15 @@
 
 
 {% block content %}
-
-
+<img src="media/products/sample-3.jpg" alt="banniere" style="width: -webkit-fill-available;">
+<h1 style="text-align: center; border: solid;" >Nos produits</h1>
+<div class="produit">
 {% for produit in produits %}
+<div >
 <h2> {{ produit.name }}</h2>
 <img src="{{ produit.tsumbnail.url }}" alt="{{ produit.name }}" style="max-width: 250px;">
 <a href="{% url 'produit' produit.slug %}">Voir l'article</a>
+</div>
 {% endfor %}
+</div>
 {% endblock %} 

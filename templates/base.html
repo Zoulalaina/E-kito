@@ -5,15 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-kitro</title>
-</head>
+    <!-- Dans votre fichier base.html ou similaire -->
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .logo{
+            border: solid;
+        }
+        .produit{
+        display: flex;
+    }
+
+        /* Header */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Navbar links */
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* Main content */
+        .content {
+            padding: 20px;
+            background-color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+            .content {
+                padding: 0;
+            }
+        }
+    </style>
+
 <body>
+    <div class="navbar">
+        <div class="logo">
     <a href="{% url 'index' %}">
     <h1>E-kitro</h1>
 </a>
+        </div>
+        <div>
+
     {% if user.is_authenticated %}
     
     <a href="{% url 'update' %}">{{ user.username }} </a> 
-    <a href="{% url 'logout' %}">Deconnexion</a>
+    <a href="{% url 'logout' %}" >Deconnexion</a>
 
     {% else %}
     <a href="{% url 'login' %}">Connexion </a>
@@ -24,8 +82,19 @@
     <a href="{% url 'cart' %}"> Voir le panier ({{ user.cart.order.count }})</a>
 
     {% endif %}
+</div>
+    </div>
+    <div class="content">
    
     {% block content %}
     {% endblock %}
+    </div>
+
+    <footer class="footer">
+        <span> E-kitro market @ 2024</span>
+        <p>ekitro@gmail.com</p>
+        
+    </footer>
+
 </body>
 </html>
